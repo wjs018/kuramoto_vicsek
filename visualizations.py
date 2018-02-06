@@ -5,6 +5,8 @@ from matplotlib.patches import Circle
 from matplotlib.collections import PatchCollection
 import numpy as np
 
+import isolum_rainbow
+
 
 def draw_frame(**kwargs):
     # draws a frame of the simulation.
