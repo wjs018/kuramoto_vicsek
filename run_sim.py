@@ -1,30 +1,25 @@
-import argparse as ap
 import time
-
 import numpy as np
 
 import simulation_object as so
 import visualizations as v
+
 from input import parameter_dict
 
 if __name__ == '__main__':
-    parser = ap.ArgumentParser(description='Simulate flocking with rotation.')
+    
+    delta_t = parameter_dict.pop('delta_t', 0.02)
+    total_time = parameter_dict.pop('sim_time', 15)
+    output_file = parameter_dict.pop('output_file', 'output.mp4')
 
-    parser.add_argument('-t', dest='sim_time', type=int, help='time to run simulation', default=15)
-    parser.add_argument('-o', dest='output_file', type=str, help='output movie name', default='output.mp4')
-    args = parser.parse_args()
-
-    sim = so.SimulationObject(parameter_dict)
-
-    delta_t = 0.02
-    total_time = args.sim_time
-
-    steps = total_time / delta_t
+    steps = np.ceil(total_time / delta_t)
     t = np.linspace(0, total_time, steps)
 
     st = time.time()
     X = []
     V = []
+    
+    sim = so.SimulationObject(parameter_dict, **parameter_dict)
 
     print('...running simulation...')
     for i in xrange(len(t) - 1):
@@ -42,5 +37,6 @@ if __name__ == '__main__':
     print('...creating movie...')
     writer = v.initialize_movie_writer()
     data = np.array([X, V, t, sim.box_size, sim._max_dist])
-    v.write_movie(data, writer, movie_path_and_name=args.output_file)
+    #v.write_movie(data, writer, movie_path_and_name=args.output_file)
+    v.write_movie(data, writer, movie_path_and_name=output_file)
     print('...done!')

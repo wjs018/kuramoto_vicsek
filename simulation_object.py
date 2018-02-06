@@ -7,7 +7,9 @@ import helper_functions as hf
 
 
 class SimulationObject:
-    def __init__(self, parameter_dict):
+    def __init__(self, parameter_dict, num_points=200, box_size=30, nu=3., 
+                 C=1.5, speed=2., w_amp=1., ww=0., w0=0., max_dist=2.,
+                 max_num=20):
 
         '''Initializes the class
                 Parameters
@@ -49,22 +51,32 @@ class SimulationObject:
                    '''
 
         # parameters
-        self.num_points = 200
-        self.box_size = 30
-        self.nu = 3
-        self.C = 1.5
-        self.speed = 2
-        self.w_amp = 1
-        self.ww = 0
-        self.w0 = 0
-        self.w_amp = 0
-        self._max_dist = 2
-        self._max_num = 20
+#         self.num_points = 200
+#         self.box_size = 30
+#         self.nu = 3
+#         self.C = 1.5
+#         self.speed = 2
+#         self.w_amp = 1
+#         self.ww = 0
+#         self.w0 = 0
+#         self.w_amp = 0
+#         self._max_dist = 2
+#         self._max_num = 20
+        self.num_points = num_points
+        self.box_size = box_size
+        self.nu = nu
+        self.C = C
+        self.speed = speed
+        self.w_amp = w_amp
+        self.ww = ww
+        self.w0 = w0
+        self._max_dist = max_dist
+        self._max_num = max_num
         self.current_points = 0
         self.current_v = 0
         self.F = -1
         self.G = -1
-        self.set_parameters(parameter_dict)
+#         self.set_parameters(parameter_dict)
         self._initialize_step(parameter_dict)
         self.vshape = np.shape(self.current_v)
         self.vbar, self.NiNk = self.calc_vbar()
