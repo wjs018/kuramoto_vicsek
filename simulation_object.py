@@ -3,7 +3,7 @@ import sys
 import numpy as np
 import scipy.spatial as spatial
 
-import helper_functions as hf
+#import helper_functions as hf
 
 
 class SimulationObject:
@@ -65,7 +65,6 @@ class SimulationObject:
         self.current_v = 0
         self.F = -1
         self.G = -1
-#         self.set_parameters(parameter_dict)
         self._initialize_step(parameter_dict)
         self.vshape = np.shape(self.current_v)
         self.vbar, self.NiNk = self.calc_vbar()
@@ -162,7 +161,7 @@ class SimulationObject:
             ----------
             None'''
         if 'w_amp' in parameter_dict:
-            if hf.check_type(parameter_dict['w_amp'], [int, float]):
+            if type(parameter_dict['w_amp']) in [int, float]:
                 self.w_amp = parameter_dict['w_amp']
             else:
                 print('Type Error: Type for w_amp should be int or float.  Assigning to default of 0.1 ')
