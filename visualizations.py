@@ -112,7 +112,7 @@ def write_movie(data, writer, qm=1, **kwargs):
         Parameters
         ----------
         data: list of arrays
-            Data list has formate of [X, V, t, box_size, max_dist]. box size and max_dist are floats.
+            Data list has format of [X, V, t, box_size, max_dist]. box size and max_dist are floats.
             X is an array of positions from simulation. V is array of orientations from simulation.
         writer : manimation movie writer
 

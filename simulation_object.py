@@ -51,17 +51,6 @@ class SimulationObject:
                    '''
 
         # parameters
-#         self.num_points = 200
-#         self.box_size = 30
-#         self.nu = 3
-#         self.C = 1.5
-#         self.speed = 2
-#         self.w_amp = 1
-#         self.ww = 0
-#         self.w0 = 0
-#         self.w_amp = 0
-#         self._max_dist = 2
-#         self._max_num = 20
         self.num_points = num_points
         self.box_size = box_size
         self.nu = nu
@@ -320,7 +309,7 @@ class SimulationObject:
             ti : float
                 time of start of this step
             ti1 : float
-                time start of the next tep
+                time start of the next step
 
             Returns
             ----------
