@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 import simulation_object as so
-#import visualizations as vis
 import isolum_rainbow
 
 # Read in simulation parameters from input.py
