@@ -53,9 +53,6 @@ if __name__ == '__main__':
     positions = []
     velocities = []
     
-    # Track a single particle
-    p1_positions = np.zeros((len(times)-1, 2))
-    
     # Create our simulation object
     sim = so.SimulationObject(parameter_dict, **parameter_dict)
     
@@ -71,9 +68,6 @@ if __name__ == '__main__':
         # Record time step's array of positions and velocities
         positions.append(sim.current_points)
         velocities.append(sim.current_v)
-        
-        # Record position for first particle
-        p1_positions[i, :] = positions[i][0,:]
 
         if i == len(times) - 2:
             et = time.time()
