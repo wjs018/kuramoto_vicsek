@@ -11,12 +11,29 @@ from input import parameter_dict
 
 
 def draw_frame(data, scaler, i, fig, ax, box_size):
+    """Makes a quiver plot from the given positions and velocities.
+    
+    Inputs:
+    
+    data     - positions and velocities of the simulation
+    scaler   - constant used to scale the arrows of the quiver plot down
+               so that they are shaped correctly
+    i        - time step to plot the positions and velocities for
+    fig      - figure that result is plotted in
+    ax       - axes that the quiver is plotted on
+    box_size - size of the simulation boundary
+    
+    Returns:
+    
+    fig      - the same figure as input
+    quiv     - the completed quiver plot
+    """
     
     # Unpack the data
-    x = data[0][i][:,0]
-    y = data[0][i][:,1]
-    u = scaler * data[1][i][:,0]
-    v = scaler * data[1][i][:,1]
+    x = data[0][i][:, 0]
+    y = data[0][i][:, 1]
+    u = scaler * data[1][i][:, 0]
+    v = scaler * data[1][i][:, 1]
     
     # Calculate colors
     colors = (np.arctan2(v, u)) % (2 * np.pi)
@@ -71,15 +88,15 @@ if __name__ == '__main__':
         if i == len(times) - 2:
             et = time.time()
 
-    print('real seconds per step: ' +  str((et - st) / len(times)))
-    print('total elapsed time: ' +  str(et - st))
+    print('real seconds per step: ' + str((et - st) / len(times)))
+    print('total elapsed time: ' + str(et - st))
 
     # Define our scaler for plotting
     scaler = 1.2 * parameter_dict['box_size'] / 40.
     
     # Create the figure and axes to draw to
-    fig = plt.figure(figsize=(10,10))
-    ax = plt.axes([0,0,1,1])
+    fig = plt.figure(figsize=(10, 10))
+    ax = plt.axes([0, 0, 1, 1])
     
     if save_movie:
         print('...creating movie...')
